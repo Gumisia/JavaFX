@@ -26,15 +26,15 @@ public class Main extends Application {
         Group root = new Group(); //podstawowa jednostka organizacyjna
 
 
-//        Button b = new Button("Click me");
-//        b.setLayoutX(300);
-//        b.setLayoutY(200);
-//        b.setOnAction(
-//                e -> System.out.println("Hello FX")
-//        );
-////        Color c = Color.YELLOW; // to z awt !! uwazac!!
-//
-//        root.getChildren().add(b);
+        Button b = new Button("Click me");
+        b.setLayoutX(300);
+        b.setLayoutY(200);
+        b.setOnAction(
+                e -> System.out.println("Hello FX")
+        );
+//        Color c = Color.YELLOW; // to z awt !! uwazac!!
+
+        root.getChildren().add(b);
 
 
         Scene scene = new Scene(root, 800, 600);
