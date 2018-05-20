@@ -1,12 +1,12 @@
 package hello;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -38,9 +38,10 @@ public class Main extends Application {
 
 
         Scene scene = new Scene(root, 800, 600);
-/*
+
         Random rand = new Random(System.currentTimeMillis());
 
+        /*
         for(int i=0; i<100; i++){
             int x = rand.nextInt((int)scene.getWidth());
             int y = rand.nextInt((int)scene.getHeight());
@@ -52,15 +53,21 @@ public class Main extends Application {
                     font = Font.font("SanSerif", 15+rand.nextInt(30));
                     break;
                 case 1:
-                    font = Font.font("SanSerif", 30);
+                    font = Font.font("SanSerif", 50);
                     break;
                 case 2:
                     font = Font.font("MonoSpaced",30);
                     break;
+                    default:
+                        font = Font.font("MonoSpaced",30);
+
+
             }
 
             root.getChildren().add(text);
 
+
+            text.setFont(font);
             text.setRotate(
                     rand.nextInt(360)
             );
@@ -75,18 +82,61 @@ public class Main extends Application {
             );
 
 
-        }
+        }*/
 
-*/
+
 
         MenuBar menuBar = new MenuBar();
 
         Menu menu = new Menu("File");
         menu.getItems().add(new MenuItem("Exit"));
 
+        ToggleGroup tg = new ToggleGroup();
+
+        Menu menu2 = new Menu("Radio");
+        RadioMenuItem r1 = new RadioMenuItem("r1");
+        r1.setToggleGroup(tg);
+
+        RadioMenuItem r2 = new RadioMenuItem("r2");
+        r2.setToggleGroup(tg);
+
+        menu2.getItems().add(r1);
+        menu2.getItems().add(r2);
+
         menuBar.getMenus().add(menu);
+        menuBar.getMenus().add(menu2);
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
-        root.getChildren().add(menuBar);
+//        root.getChildren().add(menuBar);
+
+        Label fNameLabel = new Label("Imie: ");
+        TextField fNameField = new TextField();
+        Label lNameLabel = new Label("Nazwisko: ");
+        TextField lNameField = new TextField();
+
+        GridPane gp = new GridPane();
+        gp.setHgap(5);
+        gp.setVgap(5);
+
+        gp.setPadding(new Insets(5));
+
+        GridPane.setHalignment(fNameLabel, HPos.RIGHT);
+        gp.add(fNameLabel, 0, 0);
+
+        GridPane.setHalignment(fNameField, HPos.LEFT);
+        gp.add(fNameField, 1, 0);
+
+        GridPane.setHalignment(lNameLabel, HPos.RIGHT);
+        gp.add(lNameLabel, 0, 1);
+
+        GridPane.setHalignment(lNameField, HPos.LEFT);
+        gp.add(lNameField, 1, 1);
+
+//        fNameField.setLayoutX();
+//        fNameField.setLayoutY();
+
+
+
+        root.getChildren().add(gp);
 
 
         primaryStage.setTitle("First FX app");
